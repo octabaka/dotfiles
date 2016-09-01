@@ -1,5 +1,6 @@
 " OPTIONS
 set autoread
+set autochdir
 set number
 set noruler
 set ignorecase
@@ -20,7 +21,7 @@ set tabstop=4
 
 set ai "Auto indent
 set si "Smart indent
-set wrap "Wrap lines
+set nowrap "Wrap lines
 
 set autowriteall
 set laststatus=2
@@ -52,6 +53,9 @@ set hlsearch
 set relativenumber
 "set undofile " UNDOS
 "set undodir=~/.vim/undodir
+"INDENT
+au FileType scss setl sw=2 sts=2 et
+
 
 " DISABLE NETRW ?
 let loaded_netrwPlugin = 1
@@ -60,7 +64,7 @@ let loaded_netrwPlugin = 1
 "-------------- AUTO COMMANDS ----------------------
 augroup autosourcing
     autocmd!
-    autocmd BufWritePost .vimrc nested source % 
+    autocmd BufWritePost .vimrc nested source %
 augroup END
 
 
@@ -94,14 +98,21 @@ Plugin 'mattn/emmet-vim'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Syntastic'
-Bundle 'quanganhdo/grb256'
+Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'quanganhdo/grb256'
+"Plugin 'w0ng/vim-hybrid'
+"Plugin 'nanotech/jellybeans.vim'
+Plugin 'twerth/ir_black'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " PLUGINS & KEY
-colors grb256
-"set background=dark
+let g:hybrid_custom_term_colors = 1
+
+colors octa
+
+set background=dark
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 0 " Buffer tabs en haut
 let g:airline_theme='luna'
@@ -129,7 +140,7 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'startify']
 let g:indent_guides_default_mapping = 0
 "let g:indent_guides_guide_size = 1
 "let g:indent_guides_start_level = 1
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=232
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=232
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=233
 
 
@@ -141,7 +152,7 @@ let g:multi_cursor_quit_key='<Esc>'
 let g:multi_cursor_start_key='<C-d>'
 "let g:netrw_liststyle= 3 " Meilleur browser style VINAEGERHRHHRRHRRH -
 set wildignore+=*.o,*~,*.pyc,*/node_modules/*,*/app/cache/*,*/vendor/*,*/.git/*,.DS_Store
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+"let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 
 "if executable('ag')
 "      let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -151,7 +162,8 @@ let g:NERDAltDelims_jinja = 1
 
 let g:syntastic_javascript_checkers=['']
 let g:syntastic_enable_signs = 0
-
+let g:syntastic_scss_checkers=['scss_lint']
+"sass scss_lint
 
 let g:startify_session_persistence = 1
 "let g:startify_list_order = [ 'sessions', 'files', 'dir', 'bookmarks', 'commands']
@@ -172,10 +184,10 @@ let g:mapleader = ","
 "<nop> = no operation ^_^
 let g:filebeagle_suppress_keymaps = 1
 nmap <silent> -          <Plug>FileBeagleOpenCurrentBufferDir
-" LEARN JK IS BETTER THAN CTRL-C IN INSERT MODEZZZZZ
-inoremap jk <esc>
-inoremap <esc> <nop>
-inoremap <C-c> <nop>
+" jk pour escape le mode insert?!
+"inoremap jk <esc>
+"inoremap <esc> <nop>
+"inoremap <C-c> <nop>
 " ----------------------- Î
 noremap <C-a> :call NERDComment(0,"toggle")<cr>
 nnoremap <leader>ev :tabedit $MYVIMRC<cr>
@@ -191,7 +203,8 @@ nnoremap <leader>h :Dash<cr>
 nnoremap <C-T> :CtrlPBufTag<cr>
 "nmap <leader>f :CtrlPMRUFiles<cr>
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPCurWD'
+"let g:ctrlp_cmd = 'CtrlPCurWD'
+"let g:ctrlp_working_path_mode = ''
 nnoremap § :CtrlPBuffer<cr>
 nnoremap <leader>s :w<cr>
 nnoremap <space> i<space><esc>
@@ -212,6 +225,7 @@ nnoremap th :tabprev<cr>
 "  'm
 
 " FOLDS
+set foldmethod=manual
 " zi	switch folding on or off
 " za	toggle current fold open/closed
 " zc	close current fold
