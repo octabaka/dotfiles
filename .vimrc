@@ -30,6 +30,9 @@ set splitbelow
 set splitright
 set nospell
 set so=7
+"set wildmode=longest,full,full
+set wildmode=list:longest,full
+set completeopt=longest,menuone
 set wildmenu
 set hid
 set ignorecase
@@ -103,6 +106,11 @@ Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'w0ng/vim-hybrid'
 "Plugin 'nanotech/jellybeans.vim'
 Plugin 'twerth/ir_black'
+Plugin 'stephpy/vim-yaml'
+"Plugin 'davidhalter/jedi-vim'
+Plugin 'Valloric/YouCompleteMe'
+"Plugin 'ervandew/supertab'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -184,6 +192,11 @@ let g:mapleader = ","
 "<nop> = no operation ^_^
 let g:filebeagle_suppress_keymaps = 1
 nmap <silent> -          <Plug>FileBeagleOpenCurrentBufferDir
+
+
+let g:ycm_python_binary_path = '/usr/local/bin/python3'
+
+
 " jk pour escape le mode insert?!
 "inoremap jk <esc>
 "inoremap <esc> <nop>
@@ -207,7 +220,7 @@ let g:ctrlp_map = '<c-p>'
 "let g:ctrlp_working_path_mode = ''
 nnoremap § :CtrlPBuffer<cr>
 nnoremap <leader>s :w<cr>
-nnoremap <space> i<space><esc>
+"nnoremap <space> i<space><esc>
 nnoremap tn :tabnew<Space>
 nnoremap tl :tabnext<cr>
 nnoremap th :tabprev<cr>
