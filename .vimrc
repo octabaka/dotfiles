@@ -1,6 +1,6 @@
 " OPTIONS
 set autoread
-set autochdir
+"set autochdir
 set number
 set noruler
 set ignorecase
@@ -30,8 +30,8 @@ set splitbelow
 set splitright
 set nospell
 set so=7
-"set wildmode=longest,full,full
-set wildmode=list:longest,full
+set wildmode=longest,full,full
+"set wildmode=list:longest,full
 set completeopt=longest,menuone
 set wildmenu
 set hid
@@ -90,9 +90,6 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'evidens/vim-twig'
 Plugin 'tpope/vim-surround'
-Plugin 'wincent/terminus' "Better integration
-Plugin 'Valloric/MatchTagAlways'
-"Plugin 'Yggdroot/indentLine'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'mhinz/vim-startify'
@@ -102,14 +99,11 @@ Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Syntastic'
 Plugin 'terryma/vim-multiple-cursors'
-"Plugin 'quanganhdo/grb256'
-"Plugin 'w0ng/vim-hybrid'
-"Plugin 'nanotech/jellybeans.vim'
-Plugin 'twerth/ir_black'
 Plugin 'stephpy/vim-yaml'
-"Plugin 'davidhalter/jedi-vim'
-Plugin 'Valloric/YouCompleteMe'
-"Plugin 'ervandew/supertab'
+
+Plugin 'wincent/terminus' "Better integration Iterm OSX Only !!
+Plugin 'Valloric/MatchTagAlways' "REQUIRES PYTHON :echo has('python')
+Plugin 'Valloric/YouCompleteMe' "REQUIRES cd .vim/bundle/install.py --system-boost --tern-completer
 
 
 " All of your Plugins must be added before the following line
@@ -178,20 +172,23 @@ let g:startify_session_persistence = 1
 let g:startify_list_order = [
             \ ['  Sessions'],
             \ 'sessions',
-            \ ['My most recently used files in the current directory:'],
+            \ ['Fichiers utilisés dans ce répertoire'],
             \ 'dir',
-            \ ['My most recently used files'],
+            \ ['Fichiers les plus utilisés tout partout'],
             \ 'files',
             \ ['These are my bookmarks:'],
             \ 'bookmarks',
             \ ['These are my commands:'],
             \ 'commands',
             \ ]
+
+let g:startify_change_to_dir = 0
+" ------- 
 let mapleader = ","
 let g:mapleader = ","
 "<nop> = no operation ^_^
 let g:filebeagle_suppress_keymaps = 1
-nmap <silent> -          <Plug>FileBeagleOpenCurrentBufferDir
+map <silent> -          <Plug>FileBeagleOpenCurrentBufferDir
 
 
 let g:ycm_python_binary_path = '/usr/local/bin/python3'
