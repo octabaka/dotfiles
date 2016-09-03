@@ -65,10 +65,24 @@ let loaded_netrwPlugin = 1
 
 
 "-------------- AUTO COMMANDS ----------------------
-augroup autosourcing
+"augroup autosourcing
+    "autocmd!
+    "autocmd BufWritePost .vimrc nested source %
+"augroup END
+
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
     autocmd!
-    autocmd BufWritePost .vimrc nested source %
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
+
 
 
 autocmd BufNewFile,BufRead *.volt   set syntax=jinja
@@ -221,6 +235,9 @@ nnoremap <leader>s :w<cr>
 nnoremap tn :tabnew<Space>
 nnoremap tl :tabnext<cr>
 nnoremap th :tabprev<cr>
+
+cmap w!! w !sudo tee >/dev/null %
+
 "
 "TIPS AND TRICKS
 "
