@@ -99,7 +99,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'rizzatti/dash.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'evidens/vim-twig'
@@ -111,13 +110,19 @@ Plugin 'jeetsukumaran/vim-filebeagle'
 Plugin 'mattn/emmet-vim'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'Syntastic'
+"Plugin 'Syntastic'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'stephpy/vim-yaml'
 
-Plugin 'wincent/terminus' "Better integration Iterm OSX Only !!
-Plugin 'Valloric/MatchTagAlways' "REQUIRES PYTHON :echo has('python')
-Plugin 'Valloric/YouCompleteMe' "REQUIRES cd .vim/bundle/install.py --system-boost --tern-completer
+if has("macunix")
+    Plugin 'wincent/terminus' "Better integration Iterm OSX Only !!
+    Plugin 'rizzatti/dash.vim' " Doc OSX
+endif
+
+if has("python")
+    Plugin 'Valloric/MatchTagAlways' "REQUIRES PYTHON :echo has('python')
+    Plugin 'Valloric/YouCompleteMe' "REQUIRES cd .vim/bundle/install.py --system-boost --tern-completer
+endif
 
 
 " All of your Plugins must be added before the following line
@@ -197,6 +202,9 @@ let g:startify_list_order = [
             \ ]
 
 let g:startify_change_to_dir = 0
+let g:startify_relative_path = 0
+let g:startify_session_ignore_files = 1 
+"let g:startify_skiplist = [ 'filebeagle.*']
 " ------- 
 let mapleader = ","
 let g:mapleader = ","
@@ -205,8 +213,9 @@ let g:filebeagle_suppress_keymaps = 1
 map <silent> -          <Plug>FileBeagleOpenCurrentBufferDir
 
 
-let g:ycm_python_binary_path = '/usr/local/bin/python3'
-
+if has("macunix")
+    let g:ycm_python_binary_path = '/usr/local/bin/python3'
+endif
 
 " jk pour escape le mode insert?!
 "inoremap jk <esc>
@@ -223,7 +232,9 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
-nnoremap <leader>h :Dash<cr>
+if has("macunix")
+    nnoremap <leader>h :Dash<cr>
+endif
 nnoremap <C-T> :CtrlPBufTag<cr>
 "nmap <leader>f :CtrlPMRUFiles<cr>
 let g:ctrlp_map = '<c-p>'
