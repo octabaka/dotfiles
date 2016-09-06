@@ -1,4 +1,5 @@
 " OPTIONS
+"set clipboard=unnamed
 set autoread
 "set autochdir
 set number
