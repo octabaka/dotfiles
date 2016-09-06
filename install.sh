@@ -6,11 +6,14 @@ git clone --depth=1 https://github.com/octabaka/dotfiles.git ~/dotfiles
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/octa.vim ~/.vim/colors/octa.vim
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+ln -s ~/dotfiles/.zshrc ~/.zshrc
+mkdir ~/.zfunctions
+ln -s ~/dotfiles/pure.zsh ~/.zfunctions/prompt_pure_setup
+ln -s ~/dotfiles/async.zsh ~/.zfunctions/async
 
 vim +PluginInstall +qall
 
 python ~/.vim/bundle/install.py --system-boost --tern-completer
-
 
 
 
