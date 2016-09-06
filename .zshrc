@@ -7,6 +7,7 @@ bindkey -v
 bindkey -M viins '^b' up-line-or-history
 bindkey -M viins '^p' up-line-or-history
 bindkey -M viins '^f' down-line-or-history
+bindkey -M viins '^n' down-line-or-history
 
 export EDITOR='vim'
 export VISUAL='vim'
