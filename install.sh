@@ -1,6 +1,7 @@
 #!/bin/sh
 
 mkdir -p ~/.vim/colors
+mkdir -p ~/.vim/bundle
 git clone --depth=1 https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone --depth=1 https://github.com/octabaka/dotfiles.git ~/dotfiles
 ln -s ~/dotfiles/.vimrc ~/.vimrc
