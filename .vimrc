@@ -187,7 +187,10 @@ let g:syntastic_enable_signs = 0
 let g:syntastic_scss_checkers=['scss_lint']
 "sass scss_lint
 
-let g:startify_session_persistence = 1
+let g:startify_session_persistence = 0
+let g:startify_session_delete_buffers = 1
+let g:startify_session_autoload = 1
+let g:startify_session_remove_lines = ['filebeagle']
 "let g:startify_list_order = [ 'sessions', 'files', 'dir', 'bookmarks', 'commands']
 let g:startify_list_order = [
             \ ['  Sessions'],
@@ -204,7 +207,6 @@ let g:startify_list_order = [
 
 let g:startify_change_to_dir = 0
 let g:startify_relative_path = 0
-let g:startify_session_ignore_files = 1 
 "let g:startify_skiplist = [ 'filebeagle.*']
 " ------- 
 let mapleader = ","
