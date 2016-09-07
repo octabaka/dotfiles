@@ -24,7 +24,7 @@ setopt inc_append_history
 setopt share_history
 
 setopt no_flowcontrol
-
+setopt autocd
 setopt rm_star_wait
 setopt list_types
 setopt no_auto_name_dirs
