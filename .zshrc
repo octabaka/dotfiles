@@ -13,8 +13,9 @@ bindkey '^r' history-incremental-search-backward
 export EDITOR='vim'
 export VISUAL='vim'
 
-SAVEHIST=1000
-HISTFILE=~/.zsh_history
+export SAVEHIST=1000
+export SAVEHIST=1000
+export HISTFILE=~/.zsh_history
 setopt HIST_IGNORE_DUPS
 setopt hist_verify
 setopt hist_expire_dups_first
