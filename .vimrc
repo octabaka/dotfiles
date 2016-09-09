@@ -1,5 +1,5 @@
 " OPTIONS
-"set clipboard=unnamed
+set clipboard=unnamed
 set autoread
 "set autochdir
 set number
@@ -225,12 +225,15 @@ endif
 "inoremap <esc> <nop>
 "inoremap <C-c> <nop>
 " ----------------------- Î
+" Emmet
+let g:user_emmet_leader_key='<C-e>' 
 noremap <C-a> :call NERDComment(0,"toggle")<cr>
 nnoremap <leader>ev :tabedit $MYVIMRC<cr>
 nnoremap <leader>eg :tabedit ./gulpfile.js<cr>
 nnoremap <leader>ep :tabedit ./package.json<cr>
 "nnoremap - :NERDTreeToggle<CR>
 nnoremap 0 ^
+nnoremap q q <Nop>
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
@@ -266,7 +269,7 @@ cmap w!! w !sudo tee >/dev/null %
 "  'm
 
 " FOLDS
-set foldmethod=manual
+set foldmethod=indent
 " zi	switch folding on or off
 " za	toggle current fold open/closed
 " zc	close current fold
