@@ -31,8 +31,8 @@ setopt list_types
 setopt no_auto_name_dirs
 
 alias ..='cd ..'
-alias ls='ls -G'
-alias l='ls -alhG'
+alias l='ls -alh'
+alias watch='watch -c -t'
 
 
 
