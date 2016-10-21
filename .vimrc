@@ -122,7 +122,7 @@ endif
 
 if has("python")
     Plugin 'Valloric/MatchTagAlways' "REQUIRES PYTHON :echo has('python')
-    Plugin 'Valloric/YouCompleteMe' "REQUIRES cd .vim/bundle/install.py --system-boost --tern-completer
+    "Plugin 'Valloric/YouCompleteMe' "REQUIRES cd .vim/bundle/install.py --system-boost --tern-completer
 endif
 
 

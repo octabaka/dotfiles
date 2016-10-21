@@ -17,11 +17,7 @@ export SAVEHIST=1000
 export SAVEHIST=1000
 export HISTFILE=~/.zsh_history
 setopt HIST_IGNORE_DUPS
-setopt hist_verify
 setopt hist_expire_dups_first
-setopt hist_ignore_space
-setopt append_history
-setopt inc_append_history
 setopt share_history
 
 setopt no_flowcontrol
@@ -33,6 +29,7 @@ setopt no_auto_name_dirs
 alias ..='cd ..'
 alias l='ls -alh'
 alias watch='watch -c -t'
+alias optipng='optipng -o7 -strip all'
 
 
 
