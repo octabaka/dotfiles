@@ -13,12 +13,14 @@ bindkey '^r' history-incremental-search-backward
 export EDITOR='vim'
 export VISUAL='vim'
 
-export SAVEHIST=1000
-export SAVEHIST=1000
+
+export HISTSIZE=7000
 export HISTFILE=~/.zsh_history
-setopt HIST_IGNORE_DUPS
-setopt hist_expire_dups_first
+setopt HIST_IGNORE_ALL_DUPS
 setopt share_history
+setopt hist_ignore_space
+
+export SAVEHIST=$HISTSIZE
 
 setopt no_flowcontrol
 setopt autocd
@@ -30,7 +32,10 @@ alias ..='cd ..'
 alias l='ls -alh'
 alias watch='watch -c -t'
 alias optipng='optipng -o7 -strip all'
+alias gs="git status"
+alias gc="git commit -a"
+alias gg="git log --graph --oneline --all"
 
 
 
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local 
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
