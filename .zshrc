@@ -39,3 +39,7 @@ alias gg="git log --graph --oneline --all"
 
 
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+autoload -Uz compinit
+compinit
+
