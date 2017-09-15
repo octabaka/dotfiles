@@ -1,3 +1,7 @@
+############### BUG IntelliJ #############
+[[ "$PATH" =~ /usr/local/bin ]] || export PATH=$PATH:/usr/local/bin
+##########################################
+
 fpath=( "$HOME/.zfunctions" $fpath )
 
 autoload -U promptinit; promptinit
@@ -35,11 +39,19 @@ alias optipng='optipng -o7 -strip all'
 alias gs="git status"
 alias gc="git commit -a"
 alias gg="git log --graph --oneline --all"
+alias ae='deactivate &> /dev/null; source ./venv/bin/activate'
+alias de='deactivate'
 
 
+#####fzf 
 
+#####
+#
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 autoload -Uz compinit
 compinit
+
+
+
 

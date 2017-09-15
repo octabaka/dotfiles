@@ -116,7 +116,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'stephpy/vim-yaml'
 
 if has("macunix")
-    Plugin 'wincent/terminus' "Better integration Iterm OSX Only !!
+    "Plugin 'wincent/terminus' "Better integration Iterm OSX Only !!
     Plugin 'rizzatti/dash.vim' " Doc OSX
 endif
 
@@ -270,6 +270,9 @@ cmap w!! w !sudo tee >/dev/null %
 
 " FOLDS
 set foldmethod=indent
+set foldlevel=99
+
+
 " zi	switch folding on or off
 " za	toggle current fold open/closed
 " zc	close current fold
