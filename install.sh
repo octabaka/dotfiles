@@ -11,6 +11,8 @@ ln -s ~/dotfiles/.zshrc ~/.zshrc
 mkdir ~/.zfunctions
 ln -s ~/dotfiles/pure.zsh ~/.zfunctions/prompt_pure_setup
 ln -s ~/dotfiles/async.zsh ~/.zfunctions/async
+ln -s ~/dotfiles/mpv.conf ~/.config/mpv/mpv.conf
+ln -s ~/dotfiles/input.conf ~/.config/mpv/input.conf
 
 vim +PluginInstall +qall
 
