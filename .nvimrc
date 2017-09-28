@@ -7,6 +7,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'dracula/vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 let g:AutoPairsCenterLine = 0
@@ -36,6 +37,7 @@ autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 
 
 
 
+noremap <C-a> :call NERDComment(0,"toggle")<cr>
 noremap <C-p> :FuzzyOpen<CR>
 nnoremap - :Ex<CR>
 

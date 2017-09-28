@@ -124,3 +124,9 @@ export VISUAL='vim'
 alias timer='termdown -b -t GOGOGO! -v fr-be'
 
 
+export HISTSIZE=7000
+export HISTFILE=~/.zsh_history
+setopt HIST_IGNORE_ALL_DUPS
+setopt share_history
+setopt hist_ignore_space
+
