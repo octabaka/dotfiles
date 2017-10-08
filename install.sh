@@ -3,8 +3,10 @@ git clone --depth=1 https://github.com/octabaka/dotfiles.git ~/dotfiles
 
 # ZSH
 ln -s ~/dotfiles/.zshrc ~/.zshrc
-git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-wget https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/spaceship.zsh -O ~/.oh-my-zsh/themes/spaceship.zsh-theme
+
+mkdir ~/.zfunctions
+ln -s ~/dotfiles/pure.zsh ~/.zfunctions/prompt_pure_setup
+ln -s ~/dotfiles/async.zsh ~/.zfunctions/asyncln -s "$PWD/async.zsh" /usr/local/share/zsh/site-functions/async
 
 # VIM
 #mkdir -p ~/.vim/colors

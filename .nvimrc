@@ -8,6 +8,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'dracula/vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 let g:AutoPairsCenterLine = 0
@@ -25,13 +26,14 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set clipboard+=unnamedplus
-set scrolloff=3
+set scrolloff=6
 set relativenumber
 set cursorline
 set gcr=a:blinkon500-blinkwait500-blinkoff500 
 set ignorecase
 set noshowmode 
 set hidden
+set mouse=a
 
 autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif 
 
@@ -43,5 +45,14 @@ nnoremap - :Ex<CR>
 
 let g:deoplete#enable_at_startup = 1
 
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_go_checkers = ['go']
+let g:syntastic_loc_list_height=2
