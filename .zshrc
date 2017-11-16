@@ -33,6 +33,7 @@ setopt list_types
 setopt no_auto_name_dirs
 
 alias ..='cd ..'
+alias ls='ls --color=auto'
 alias l='ls -alh'
 alias watch='watch -c -t'
 alias gs="git status"
@@ -42,6 +43,8 @@ alias vim="nvim"
 alias timer='termdown -b -t GOGOGO! -v fr-be'
 alias ae='deactivate &> /dev/null; source ./venv/bin/activate'
 alias de='deactivate'
+alias go='grc go'
+alias mpv='mpv --no-audio-display'
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zshrc.local
@@ -50,3 +53,5 @@ bindkey '^f' forward-word
 
 autoload -Uz compinit
 compinit
+
+export PATH="$HOME/.yarn/bin:$PATH"
