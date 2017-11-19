@@ -9,11 +9,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'Valloric/YouCompleteMe'
-" Completion manager
-"Plug 'roxma/nvim-completion-manager'
-"Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
-"Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-
+Plug 'qpkorr/vim-bufkill'
+Plug 'SirVer/ultisnips'
 Plug 'mhinz/vim-startify'
 
 call plug#end()
@@ -24,6 +21,14 @@ call plug#end()
 "let $NVIM_PYTHON_LOG_FILE="/tmp/nvim_log"
 "let $NVIM_NCM_LOG_LEVEL="DEBUG"
 "let $NVIM_NCM_MULTI_THREAD=0
+"
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+"let g:UltiSnipsExpandTrigger="<c-tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsSnippetDirectories=["mysnippets"]
+" If you want :UltiSnipsEdit to split your window.
+"let g:UltiSnipsEditSplit="vertical"
 
 " SETTINGS
 set noequalalways
@@ -34,7 +39,6 @@ set tabstop=8
 set shiftwidth=4
 set autoindent
 set smartindent
-map <F7> mzgg=G`z
 
 set clipboard+=unnamedplus
 set scrolloff=6
@@ -95,9 +99,32 @@ nnoremap tk  <C-W>k
 nnoremap tj  <C-W>j
 nnoremap th  :tabprev<CR>
 nnoremap tl  :tabnext<CR>
-nnoremap tq  :bdelete<CR>
+"nnoremap tq  :bp\|bd \#<CR>
+nnoremap tq  :BD<CR>
+map <F7> mzgg=G`z
 
+function! g:UltiSnips_Complete()
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips#JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
 
+au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-e>"
+" this mapping Enter key to <C-y> to chose the current highlight item 
+" and close the selection list, same as other IDEs.
+" CONFLICT with some plugins like tpope/Endwise
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " COLORS  Override
 hi IncSearch ctermfg=233 ctermbg=24 cterm=NONE 
 hi Search ctermfg=NONE ctermbg=NONE cterm=underline 
@@ -105,9 +132,6 @@ hi Pmenu ctermbg=17 ctermfg=15 gui=bold
 hi TabLineFill ctermfg=234 ctermbg=NONE
 hi TabLine cterm=none ctermfg=Blue ctermbg=234
 hi TabLineSel ctermfg=Red ctermbg=NONE
-" TEMPLATES
-nnoremap <leader>t :-1read $HOME/.config/nvim/templates/
-nnoremap <leader>comp :-1read $HOME/.config/nvim/templates/rcomponent.jsx<CR>
 
 
 " STARTIFY 
