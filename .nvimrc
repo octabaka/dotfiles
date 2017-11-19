@@ -41,7 +41,7 @@ set autoindent
 set smartindent
 
 set clipboard+=unnamedplus
-set scrolloff=6
+set scrolloff=4
 set number
 set cursorline
 "set gcr=a:blinkon500-blinkwait1000-blinkoff500 
@@ -88,7 +88,9 @@ nnoremap <M-s> :w<cr>
 inoremap <M-s> <Esc>:w<cr>a
 "inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 "inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
-noremap <C-a> :call NERDComment(0,"toggle")<cr>
+nnoremap <C-y> <C-x>
+nnoremap <C-x> <C-a>
+noremap <C-a> :call NERDComment(0,"toggle")<CR>j
 noremap <C-p> :FuzzyOpen<CR>
 nnoremap - :Ex<CR>
 let g:user_emmet_leader_key='<C-E>'
