@@ -1,18 +1,19 @@
 call plug#begin('~/.config/nvim/plugged')
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'mattn/emmet-vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'dracula/vim'
-Plug 'jiangmiao/auto-pairs' 
-Plug 'scrooloose/nerdcommenter'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'Valloric/YouCompleteMe'
-Plug 'qpkorr/vim-bufkill'
-Plug 'SirVer/ultisnips'
-Plug 'mhinz/vim-startify'
-
+ Plug 'ctrlpvim/ctrlp.vim'
+ Plug 'mattn/emmet-vim'
+ Plug 'vim-airline/vim-airline'
+ Plug 'vim-airline/vim-airline-themes'
+ Plug 'dracula/vim'
+ " Plug 'jiangmiao/auto-pairs' 
+ Plug 'panglos/vim-javascript'
+ Plug 'mxw/vim-jsx'
+ Plug 'Valloric/YouCompleteMe'
+ Plug 'qpkorr/vim-bufkill'
+ Plug 'SirVer/ultisnips'
+ Plug 'mhinz/vim-startify'
+ Plug 'tpope/vim-commentary'
+ Plug 'tpope/vim-surround'
+ Plug 'tpope/vim-repeat'
 call plug#end()
 
 "let g:ycm_server_python_interpreter = '/usr/bin/python2'
@@ -90,7 +91,7 @@ inoremap <M-s> <Esc>:w<cr>a
 "inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 nnoremap <C-y> <C-x>
 nnoremap <C-x> <C-a>
-noremap <C-a> :call NERDComment(0,"toggle")<CR>j
+noremap <C-a> :Commentary<CR>j
 noremap <C-p> :FuzzyOpen<CR>
 nnoremap - :Ex<CR>
 let g:user_emmet_leader_key='<C-E>'
@@ -158,3 +159,5 @@ let g:startify_list_order = [
 let g:startify_change_to_dir = 0
 let g:startify_relative_path = 0
 "let g:startify_skiplist = [ 'filebeagle.*']
+
+
