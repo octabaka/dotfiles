@@ -24,9 +24,9 @@ ln -s ~/dotfiles/octa.vim ~/.config/nvim/colors/octa.vim
 nvim +PlugInstall +qall
 
 # MPV
-mkdir -p ~/.config/mpv
-ln -s ~/dotfiles/mpv.conf ~/.config/mpv/mpv.conf
-ln -s ~/dotfiles/input.conf ~/.config/mpv/input.conf
+# mkdir -p ~/.config/mpv
+# ln -s ~/dotfiles/mpv.conf ~/.config/mpv/mpv.conf
+# ln -s ~/dotfiles/input.conf ~/.config/mpv/input.conf
 
 
 
