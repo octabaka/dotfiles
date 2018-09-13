@@ -80,7 +80,9 @@ set noswapfile
 set nowritebackup
 
 " COLORS "
-colors dracula
+if !empty(glob("~/.vim/plugged/vim/colors/dracula.vim"))
+	colors dracula
+endif
 " let g:dracula_bold = 1
 hi Normal ctermfg=NONE ctermbg=NONE cterm=NONE 
 hi CursorLine ctermfg=NONE ctermbg=232 cterm=NONE 
