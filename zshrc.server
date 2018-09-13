@@ -1,0 +1,40 @@
+
+bindkey -v
+bindkey -M viins '^p' up-line-or-history
+bindkey -M viins '^n' down-line-or-history
+bindkey '^r' history-incremental-search-backward
+
+export EDITOR='vim'
+export VISUAL='vim'
+
+export HISTSIZE=2000
+export HISTFILE=~/.zsh_history
+export SAVEHIST=$HISTSIZE
+setopt HIST_IGNORE_ALL_DUPS
+setopt share_history
+setopt hist_ignore_space
+
+
+setopt no_flowcontrol
+setopt autocd
+setopt rm_star_wait
+setopt list_types
+setopt no_auto_name_dirs
+
+alias ..='cd ..'
+alias ls='ls --color=auto'
+alias l='ls -alh'
+alias watch='watch -c -t'
+alias gs="git status"
+alias gc="git commit -a"
+alias gg="git log --graph --oneline --all"
+alias kub="kubectl"
+alias em='emacs -nw'
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+#bindkey '^f' autosuggest-accept
+bindkey '^f' forward-word
+
+autoload -Uz compinit
+compinit
+

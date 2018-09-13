@@ -39,6 +39,7 @@ alias watch='watch -c -t'
 alias gs="git status"
 alias gc="git commit -a"
 alias gg="git log --graph --oneline --all"
+alias kub="kubectl"
 # alias vim="nvim"
 alias timer='termdown -b -t GOGOGO! -v fr-be'
 alias ae='deactivate &> /dev/null; source ./venv/bin/activate'
@@ -55,7 +56,6 @@ alias ngc='ng g c --inline-template --inline-style --spec false --flat'
 function sshmysql() { ssh -p 17171 root@$1 -L 3306:127.0.0.1:3306 -N }
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zshrc.local
 #bindkey '^f' autosuggest-accept
 bindkey '^f' forward-word
 
@@ -78,3 +78,5 @@ PERL5LIB="/home/octa/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/octa/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/octa/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/octa/perl5"; export PERL_MM_OPT;
+
+source ~/.zshrc.local
