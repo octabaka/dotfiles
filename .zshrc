@@ -9,11 +9,11 @@ bindkey -M viins '^p' up-line-or-history
 bindkey -M viins '^n' down-line-or-history
 bindkey '^r' history-incremental-search-backward
 
-export EDITOR='nvim'
-export VISUAL='nvim'
+export EDITOR='vim'
+export VISUAL='vim'
 export GOPATH=~/go
 export PATH="$PATH:$GOPATH/bin"
-export WINEARCH=win64
+#export WINEARCH=win64
 
 
 
@@ -49,7 +49,12 @@ alias mpv='mpv --no-audio-display'
 alias bb='brunch build'
 alias bw='brunch watch -s'
 alias sl='noglob streamlink'
+alias n='ncmpcpp'
 alias em='emacs -nw'
+alias p='ps axf --format "pid %cpu %mem cmd"'
+alias pp='ps ax --format "pid %cpu %mem cmd" --sort "%cpu %mem"'
+alias pc='watch -n 0 "lscpu | grep MHz"'
+alias s='sudo systemctl'
 # alias vim='emacs -nw'
 alias chromium='chromium --ignore-gpu-blacklist'
 alias ngc='ng g c --inline-template --inline-style --spec false --flat'
@@ -66,17 +71,13 @@ export PATH="$HOME/.gem/ruby/2.5.0/bin:$HOME/.yarn/bin:$PATH"
 export TERM="xterm-256color"
 
 # if [ -x /usr/local/bin/taoup -a -x /usr/local/bin/taoup-fortune ]; then
-#    taoup-fortune
-# fi
+	#    taoup-fortune
+	# fi
 
 # LEADER TEST
 # eval "$(leader init)"
 
 
-PATH="/home/octa/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/octa/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/octa/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/octa/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/octa/perl5"; export PERL_MM_OPT;
-
 source ~/.zshrc.local
+source ~/.local/share/icons-in-terminal/icons_bash.sh
+

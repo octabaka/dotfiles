@@ -1,4 +1,3 @@
-
 bindkey -v
 bindkey -M viins '^p' up-line-or-history
 bindkey -M viins '^n' down-line-or-history
@@ -28,8 +27,8 @@ alias watch='watch -c -t'
 alias gs="git status"
 alias gc="git commit -a"
 alias gg="git log --graph --oneline --all"
-alias kub="kubectl"
-alias em='emacs -nw'
+alias p='ps axf --format "pid %cpu %mem cmd"'
+alias pp='ps ax --format "pid %cpu %mem cmd" --sort "%cpu %mem"'
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 #bindkey '^f' autosuggest-accept
