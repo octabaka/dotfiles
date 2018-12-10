@@ -188,6 +188,7 @@
 
 ;; ################################################
 
+
 (use-package neotree
   :ensure t
   :config
@@ -203,8 +204,6 @@
  	(setq neo-banner-message nil)
  	(setq neo-vc-integration '(face char))
  	(setq neo-autorefresh nil)
-
-
   (setq projectile-switch-project-action 'neotree-projectile-action)
  	(general-define-key
  	 :states 'normal
@@ -218,7 +217,8 @@
    "r" 'neotree-refresh
    "m" 'neotree-rename-node
    "A" 'neotree-stretch-toggle
-   "H" 'neotree-hidden-file-toggle
+   ;; "H" 'neotree-hidden-file-toggle
+   "H" 'neotree-change-root
    "DEL" 'neotree-select-up-node
  	 )
  	(general-define-key
@@ -415,6 +415,11 @@
 	(setq json-reformat:indent-width config-offset)
 	(setq json-reformat:pretty-string? nil)
 	)
+(general-define-key
+ :states 'normal
+ :keymaps '(restclient-mode-map)
+ "RET" 'restclient-http-send-current
+ )
 
 
 ;; ############  GLOBAL Functions #####################
