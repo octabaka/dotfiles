@@ -8,25 +8,23 @@
 (setq shell-file-name "/usr/bin/sh")
 
 (when (file-exists-p "~/.emacs.local")
-   (load-file "~/.emacs.local"))
-;; (set-frame-font "InputMono Nerd Font 9" nil t)
+  (load-file "~/.emacs.local"))
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (setq package-enable-at-startup nil)
 (package-initialize)
-;; CUSTOM VARIABLES
+
+;; VARIABLES
 (defvar config-offset 2)
-;;
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-
 (eval-when-compile
   (require 'use-package))
-
 
 (require 'mouse)
 (xterm-mouse-mode t)
@@ -55,7 +53,7 @@
   )
 
 
-
+;; EVIL
 (use-package evil
   :ensure t
 	:init
@@ -67,53 +65,20 @@
     :ensure t
     :config
     (global-evil-surround-mode))
-
-  ;; (use-package evil-commentary
-  ;;   :ensure t
-  ;;   :config
-  ;;   (evil-commentary-mode)
-  ;;   (general-define-key
-	;; 	 :states '(normal insert)
-	;; 	 "C-a" 'evil-commentary-line
-	;; 	 )
-	;; 	)
-
   (use-package evil-matchit
     :ensure t
     :config
     (global-evil-matchit-mode 1)
     )
-  ;; (use-package evil-escape
-  ;;   :ensure t
-  ;;   :config
-  ;;   (evil-escape-mode 1)
-  ;;   ;; (setq-default evil-escape-key-sequence "fj")
-  ;;   (setq-default evil-escape-delay 0.2))
-
-  ;; (use-package evil-leader
-  ;;   :ensure t
-  ;;   :config
-  ;;   (global-evil-leader-mode)
-  ;;   )
-
-  ;; (use-package evil-indent-textobject
-  ;;   :ensure t)
+	(use-package evil-collection
+		:after evil
+		:ensure t
+		:config
+		(evil-collection-init)
+		)
   )
 
-
-(use-package evil-collection
-	:after evil
-	:ensure t
-	:config
-	(evil-collection-init)
-	)
-
-;; (use-package helm
-;; 	:ensure t
-;; 	:config
-;;   (helm-mode 1)
-;; 	)
-;; ;; Project Interaction Library for Emacs
+;; Projectile
 (use-package projectile
   :ensure t
   :config
@@ -171,91 +136,13 @@
  "<escape>" 'keyboard-escape-quit
  )
 
-;; (ido-mode 1)
-;; (ido-everywhere t)
-;; (setq ido-enable-flex-matching t)
-;; (setq ido-use-filename-at-point 'guess)
-;; (defun bind-ido-keys ()
-;;   "Keybindings for ido mode."
-;;  	(general-define-key
-;;  	 :keymaps 'ido-completion-map
-;;  	 "ESC" 'ido-next-match
-;;  	 )
-
-;; (add-hook 'ido-setup-hook #'bind-ido-keys)
-
-;; ;; Counsel, a collection of Ivy-enhanced versions of common Emacs commands
-;; (use-package counsel
-;;   :ensure t
-;;   :config
-;;   (general-define-key
-;;    "M-x" 'counsel-M-x
-;;    ;; "M-y" 'counsel-yank-pop
-;;    ;; "C-x C-f" 'counsel-find-file
-;;    ;; "C-h v" 'counsel-describe-variable
-;;    ;; "C-h f" 'counsel-describe-function
-;;    ;; "C-x 8" 'counsel-unicode-char
-;;    "<escape>" 'minibuffer-keyboard-quit
-;;    )
-;;   )
-
-;; Ivy, a generic completion mechanism for Emacs.
-;; (use-package ivy
-;;   :ensure t
-;;   :diminish ivy-mode
-;;   :config
-;;   (ivy-mode t)
-;;   (setq ivy-initial-inputs-alist nil)
-;;   (setq ivy-height 8)
-;;   (setq ivy-use-virtual-buffers t)
-;;   (setq ivy-virtual-abbreviate 'full)
-;; 	(load "~/ivy-filthy-rich.el")
-;; 	(require 'ivy-filthy-rich)
-;; 	(ivy-filthy-rich-mode)
-;;   (general-define-key
-;;    :keymaps 'ivy-minibuffer-map
-;;    "RET" 'ivy-alt-done
-;;    "C-j" 'ivy-next-line
-;;    "C-k" 'ivy-previous-line
-;; 	 "C-p" 'ivy-previous-history-element
-;; 	 "C-n" 'ivy-next-history-element
-;;    )
-;;   )
-
-
-
-
+;; WICH-KEY
 (use-package which-key
   :ensure t
   :config
   (which-key-mode))
 
-;; ############### MODELINEEEEEEEEEEEEEEE
-;; (use-package telephone-line
-;;   :ensure t
-;;   :config
-;; 	(setq telephone-line-lhs
-;; 				'((evil   . (telephone-line-evil-tag-segment))
-;; 					(evil . (telephone-line-buffer-modified-segment))
-;; 					(accent . (
-;; 										 telephone-line-vc-segment
-;; 										 telephone-line-erc-modified-channels-segment
-;; 										 telephone-line-process-segment
-;; 										 ))
-;; 					(nil    . (
-;; 										 telephone-line-projectile-buffer-segment
-;; 										 telephone-line-process-segment
-;; 										 ))
-;; 					))
-;; 	(setq telephone-line-rhs
-;; 				'((nil    . (telephone-line-misc-info-segment))
-;; 					(accent . (telephone-line-major-mode-segment))
-;; 					(evil   . (telephone-line-airline-position-segment))
-;; 					(accent   . (telephone-line-flycheck-segment))
-;; 					)
-;; 				)
-;;   (telephone-line-mode 1)
-;;   )
+;; FEEBLELINE
 (use-package    feebleline
   :ensure       t
   :custom
@@ -268,10 +155,7 @@
 	(feebleline-default-settings-on)
 	)
 
-
-;; ################################################
-
-
+;; NEOTREE
 (use-package neotree
   :ensure t
   :config
@@ -318,22 +202,7 @@
  	 :keymaps 'evil-normal-state-map
  	 "-" 'neotree-toggle
  	 )
- 	;; (defun neotree-project-dir ()
-  ;;   "Open NeoTree using the git root. <- BUG C-p"
-  ;;   (interactive)
-  ;;   (let ((project-dir (projectile-project-root))
-  ;;         (file-name (buffer-file-name)))
-  ;;     (neotree-toggle)
-  ;;     (if project-dir
-  ;;         (if (neo-global--window-exists-p)
-  ;;             (progn
-  ;;               (neotree-dir project-dir)
-  ;;               (neotree-find file-name)))
-  ;;       (message "Could not find git project root."))))
-  ;; (add-hook 'dired-mode-hook #'neotree-project-dir)
-
   )
-
 
 ;; Modular in-buffer completion framework for Emacs
 (use-package company
@@ -363,9 +232,6 @@
 		(add-hook 'go-mode-hook #'setup-company-go)
 		)
 	)
-;; COMPANY-ETAGS POUR CSS SCSS
-;; (eval-after-load 'company-etags '(progn (add-to-list 'company-etags-modes '(web-mode typescript-mode ng2-html-mode))))
-;; (setq company-etags-everywhere '(php-mode html-mode web-mode nxml-mode typescript-mode ng2-html-mode))
 
 (use-package flycheck
 	:ensure t
@@ -414,11 +280,6 @@
 				(let ((web-mode-enable-part-face nil))
 					ad-do-it)
 			ad-do-it))
-
-	;; (defun my-web-mode-hook ()
-	;; 	"Hooks for Web mode."
-	;; 	)
-	;; (add-hook 'web-mode-hook  #'my-web-mode-hook)
 	)
 
 ;; TypeScript Interactive Development Environment for Emacs
@@ -451,28 +312,6 @@
 (add-to-list 'flycheck-checkers 'jsx-tide)
 
 
-;; ####### Javascript
-;; (add-hook 'js2-mode-hook #'setup-tide-mode)
-;; configure javascript-tide checker to run after your default javascript checker
-;; (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
-
-;; ####### JSX
-;; (require 'web-mode)
-;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
-;; (add-hook 'web-mode-hook
-;;           (lambda ()
-;;             (when (string-equal "jsx" (file-name-extension buffer-file-name))
-;;               (setup-tide-mode))))
-;; ;; configure jsx-tide checker to run after your default jsx checker
-;; (flycheck-add-mode 'javascript-eslint 'web-mode)
-;; (flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append)
-
-;; ######### KOTLIN
-;; (load "~/dev/github/kotlin-mode/kotlin-mode.el")
-;; (require 'kotlin-mode)
-;; (setq kotlin-tab-width 2)
-;; (add-to-list 'auto-mode-alist '("\\.kt\\'" . kotlin-mode))
-
 (use-package go-mode
 	:ensure t
 	:config
@@ -504,42 +343,6 @@
 	:config
 	(xclip-mode 1)
 	)
-;; (use-package yaml-mode
-;; 	:ensure t
-;; 	:config
-;; 	(add-hook 'yaml-mode-hook
-;; 						(lambda ()
-;; 							(define-key yaml-mode-map "\C-m" 'newline-and-indent)))
-;; 	)
-
-
-;; (use-package dashboard
-;; 	:ensure t
-;; 	:diminish dashboard-mode
-;; 	:config
-;; 	;; (setq dashboard-banner-logo-title "Emacs Rox :-)")
-;; 	;; (setq dashboard-startup-banner nil)
-;; 	(setq dashboard-items '((projects  . 10)
-;; 													(bookmarks . 10)))
-;; 	(dashboard-setup-startup-hook)
-;; 	(general-define-key
-;; 	 :states 'normal
-;; 	 :keymaps '(dashboard-mode-map)
-;; 	 "j" 'dashboard-next-section
-;; 	 "k" 'dashboard-previous-section
-;; 	 )
-;; 	)
-
-(use-package ng2-mode
-	:ensure t
-	:config
-	(defun setup-company-ng2 ()
-		(company-mode +1)
-		(set (make-local-variable 'company-backends) '((company-dabbrev company-dabbrev-code company-gtags company-etags company-keywords)))
-		)
-	(add-hook 'ng2-html-mode-hook #'setup-company-ng2)
-	)
-
 
 
 (use-package emmet-mode
@@ -563,39 +366,8 @@
 ;; 	)
 
 
-;; (use-package hideshow-org
-;; 	:ensure t
-;; 	:config
-;; 	(add-hook 'prog-mode-hook #'hs-minor-mode)
-;; 	)
-;; (defvar hs-special-modes-alist
-;;   (mapcar 'purecopy
-;; 					'((c-mode "{" "}" "/[*/]" nil nil)
-;; 						(c++-mode "{" "}" "/[*/]" nil nil)
-;; 						(bibtex-mode ("@\\S(*\\(\\s(\\)" 1))
-;; 						(java-mode "{" "}" "/[*/]" nil nil)
-;; 						(js-mode "{" "}" "/[*/]" nil))
-;; 					)
-;; 	)
-
-
 ;; DIRED
 (add-hook 'dired-mode-hook 'dired-hide-details-mode)
-
-
-
-;; (use-package restclient
-;; 	:ensure t
-;; 	:config
-;; 	(setq json-reformat:indent-width config-offset)
-;; 	(setq json-reformat:pretty-string? nil)
-;; 	)
-
-;; (general-define-key
-;;  :states 'normal
-;;  :keymaps '(restclient-mode-map)
-;;  "RET" 'restclient-http-send-current
-;;  )
 
 
 ;; COMMENTAIRES
@@ -616,7 +388,7 @@
 	(yas-global-mode 1)
 	)
 
-;; ############  GLOBAL Functions #####################
+;; ############   FUNCTIONS  #####################
 (defun iwb ()
 	"indent whole buffer"
 	(interactive)
@@ -624,6 +396,7 @@
 	(indent-region (point-min) (point-max) nil)
 	;; (untabify (point-min) (point-max))
 	)
+;; ################################################
 
 
 ;; Global Keys
@@ -777,6 +550,7 @@
 ;; Removes *messages* from the buffer.
 ;; (setq-default message-log-max nil)
 ;; (kill-buffer "*Messages*")
+
 (setq gc-cons-threshold (* 2 1000 1000))
 
 ;; Display the time taken to start Emacs.
@@ -789,4 +563,3 @@
                         (file-name-nondirectory user-init-file)))))
 
 ;; #################### END #######################
-
