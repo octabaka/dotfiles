@@ -8,7 +8,7 @@
 (setq shell-file-name "/usr/bin/sh")
 
 (when (file-exists-p "~/.emacs.local")
-   (load-file personal-settings))
+   (load-file "~/.emacs.local"))
 ;; (set-frame-font "InputMono Nerd Font 9" nil t)
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))

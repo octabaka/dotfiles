@@ -1,4 +1,9 @@
 fpath=( "$HOME/.zfunctions" $fpath )
+
+autoload -Uz compinit
+compinit
+fpath=(~/.zsh/completion $fpath)
+
 autoload -U promptinit; promptinit
 prompt pure
 
@@ -55,7 +60,11 @@ alias p='ps axf --format "pid %cpu %mem cmd"'
 alias pp='ps ax --format "pid %cpu %mem cmd" --sort "%cpu %mem"'
 alias pc='watch -n 0 "lscpu | grep MHz"'
 alias s='sudo systemctl'
-# alias vim='emacs -nw'
+# alias pbcopy='xclip -selection clipboard'
+# alias pbpaste='xclip -selection clipboard -o'
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
+
 alias chromium='chromium --ignore-gpu-blacklist'
 alias ngc='ng g c --inline-template --inline-style --spec false --flat'
 function sshmysql() { ssh -p 17171 root@$1 -L 3306:127.0.0.1:3306 -N }
@@ -64,8 +73,6 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 #bindkey '^f' autosuggest-accept
 bindkey '^f' forward-word
 
-autoload -Uz compinit
-compinit
 
 export PATH="$HOME/.gem/ruby/2.5.0/bin:$HOME/.yarn/bin:$PATH"
 export TERM="xterm-256color"
@@ -77,6 +84,8 @@ export TERM="xterm-256color"
 # LEADER TEST
 # eval "$(leader init)"
 
+export PATH="$HOME/.node_modules/bin:$PATH"
+export npm_config_prefix=~/.node_modules
 
 source ~/.zshrc.local
 source ~/.local/share/icons-in-terminal/icons_bash.sh
