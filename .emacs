@@ -337,13 +337,6 @@
 	:config
 	)
 
-;; COPIER COLLER
-(use-package xclip
-	:ensure t
-	:config
-	(xclip-mode 1)
-	)
-
 
 (use-package emmet-mode
 	:ensure t
