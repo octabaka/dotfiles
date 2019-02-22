@@ -7,8 +7,6 @@
 (setq gc-cons-threshold (* 50 1000 1000))
 (setq shell-file-name "/usr/bin/sh")
 
-(when (file-exists-p "~/.emacs.local")
-  (load-file "~/.emacs.local"))
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
@@ -543,6 +541,13 @@
 ;; Removes *messages* from the buffer.
 ;; (setq-default message-log-max nil)
 ;; (kill-buffer "*Messages*")
+
+(setq local-file "~/.emacs.local.el")
+(if (file-exists-p local-file)
+    (load local-file))
+
+;; (when (file-exists-p "~/.emacs.local")
+  ;; (load-file "~/.emacs.local"))
 
 (setq gc-cons-threshold (* 2 1000 1000))
 

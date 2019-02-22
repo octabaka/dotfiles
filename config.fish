@@ -1,6 +1,7 @@
 set fish_greeting
-fish_vi_key_bindings
-
+if status is-interactive
+	fish_vi_key_bindings
+end
 # set EDITOR vim
 
 alias ..='cd ..'
