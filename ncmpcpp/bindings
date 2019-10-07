@@ -149,9 +149,9 @@
 ##  - set_volume
 ##
 #
-#def_key "mouse"
-#  mouse_event
-#
+def_key "mouse"
+ mouse_event
+
 def_key "k"
  scroll_up
 
@@ -205,6 +205,7 @@ def_key "s"
 #def_key "enter"
 #  play_item
 #
+
 def_key "a"
  add_item_to_playlist
 #
@@ -466,17 +467,17 @@ def_key "h"
 #def_key "C"
 #  crop_main_playlist
 #
-#def_key "m"
+# def_key "m"
 #  move_sort_order_up
 #
-#def_key "m"
-#  move_selected_items_up
+def_key "K"
+  move_selected_items_up
 #
 #def_key "n"
 #  move_sort_order_down
 #
-#def_key "n"
-#  move_selected_items_down
+def_key "J"
+ move_selected_items_down
 #
 #def_key "M"
 #  move_selected_items_to
