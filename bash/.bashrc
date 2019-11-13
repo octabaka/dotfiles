@@ -1,6 +1,7 @@
 #
 # ~/.bashrc
 #
+stty -ixon
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -39,7 +40,7 @@ alias pc='watch -n 0 "lscpu | grep MHz"'
 alias qwer='setxkbmap fr bepo'
 alias bépo='setxkbmap ch fr'
 
-export PS1=" \[\e[00;93m\]λ \e[00;34m\]\W \[\e[0m\]"
+export PS1=" \[\e[00;93m\]λ \[\e[00;34m\]\W \[\e[0m\]"
 # PS1='[\u@\h \W]\$ '
 
 

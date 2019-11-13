@@ -50,6 +50,15 @@ let g:vista#executives = ['coc']
 let g:vista_default_executive = 'coc'
 
 nnoremap <silent> <leader>v  :Vista<cr>
+
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+" set statusline+=%{NearestMethodOrFunction()}
+
+" autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
  
 
 
@@ -111,7 +120,7 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-nnoremap <silent> <leader>d :call <SID>show_documentation()<CR>
+" nnoremap <silent> <leader>d :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -192,4 +201,10 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " this is handled by LanguageClient [LC]
 let g:go_def_mapping_enabled = 0
 
+autocmd BufWritePre *.go :CocCommand editor.action.organizeImport
 
+" MYSQL
+let g:pipemysql_no_mappings = 0
+nnoremap <leader>db :call g:PipeMySQL_SelectPreset()<cr>
+autocmd FileType sql vnoremap <buffer> <return> :call g:PipeMySQL_RunBlock()<cr>
+" SEE vimrc.local

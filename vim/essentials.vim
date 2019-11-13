@@ -68,16 +68,14 @@ set foldmethod=manual
 
 set wildignore+=*/node_modules/*,*/.git/*,*.min.js,*.min.css
 
+set noshowmode
+
 " cursor
 " augroup myCmds
 " au!
 " autocmd VimEnter * silent !echo -ne "\e[2 q"
 " augroup END
 
-" AIRLINE "
-let g:airline_powerline_fonts = 1
-let g:airline_theme='jellybeans'
-let g:airline_extensions = ['denite']
 
 " NETRW"
 " let g:netrw_banner=0
@@ -104,7 +102,8 @@ function! NetrwMapping()
 	nnoremap <buffer> <C-j> <C-w>j
 	nnoremap <buffer> <C-k> <C-w>k
 	nnoremap <buffer> <C-l> <C-w>l
-  nnoremap <buffer> <nowait> q :Rexplore<cr>
+  " nnoremap <buffer> <nowait> q :Rexplore<cr>
+  nnoremap <buffer> <nowait> q :bd<cr>
 endfunction
 
 
@@ -161,8 +160,10 @@ nnoremap q :bd<cr>
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " load conf
-nnoremap <F12> :so ~/.config/vim/init.vim<cr>
+nnoremap <F12> :so ~/devops/dotfiles/vim/init.vim<cr>
 " show colors
 nnoremap <leader>tc :runtime syntax/colortest.vim<CR>
 " Other
 nnoremap <Leader>pp :Startify<cr>
+nnoremap <Leader>i <c-a>
+nnoremap <Leader>d <c-x>

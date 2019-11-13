@@ -21,8 +21,8 @@ let g:startify_list_order = [
          \ ]
 
 let g:startify_bookmarks = [
-         \ { 'c': '~/.vimrc' },
-         \ { 'b': '~/.bashrc' },
+         \ { 'c': '~/devops/dotfiles/vim/init.vim' },
+         \ { 'b': '~/devops/dotfiles/bash/.bashrc' },
          \ { 'i': '~/.config/i3/config' },
          \ { 'n': '~/Bureau/blocNote.txt' },
          \ ]
