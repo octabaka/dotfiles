@@ -11,6 +11,7 @@ set -o histexpand
 
 
 TERM=xterm-256color
+HISTCONTROL=ignoredups:erasedups
 
 export npm_config_prefix=~/.node_modules
 
@@ -23,7 +24,7 @@ alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 alias chromium='chromium --ignore-gpu-blacklist'
 
-alias rm='gio trash'
+# alias rm='gio trash'
 alias ..='cd ..'
 alias ls='ls --color=auto'
 alias l='ls -alh'
@@ -40,6 +41,8 @@ alias pc='watch -n 0 "lscpu | grep MHz"'
 alias qwer='setxkbmap fr bepo'
 alias bépo='setxkbmap ch fr'
 
+export LS_COLORS='di=04;01;38;5;33:ow=04;01;38;5;33;48;2;60;10;0'
+
 export PS1=" \[\e[00;93m\]λ \[\e[00;34m\]\W \[\e[0m\]"
 # PS1='[\u@\h \W]\$ '
 
@@ -48,3 +51,5 @@ export PS1=" \[\e[00;93m\]λ \[\e[00;34m\]\W \[\e[0m\]"
 
 
 
+
+source /home/octa/.config/broot/launcher/bash/br

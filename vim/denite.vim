@@ -199,6 +199,7 @@ endfunction
 " Denite key
 nnoremap <F1> :Denite help<cr>
 nnoremap <F2> :Denite register<cr>
+nnoremap <nowait> <leader>j :Denite jump<cr>
 nnoremap <C-p> :Denite file/rec -start-filter -no-statusline<cr>
 nnoremap <nowait> <leader><space> :Denite buffer<cr>
 nnoremap <leader>g :Denite grep<cr>

@@ -93,8 +93,10 @@ augroup netrw_mapping
 augroup END
 
 function! NetrwMapping()
-	nnoremap <buffer> tl :bn<cr>
-	nnoremap <buffer> th :bp<cr>
+	" nnoremap <buffer> tl :BufferHistoryForward<cr>
+	" nnoremap <buffer> th :BufferHistoryBack<cr>
+	nnoremap <buffer> tl <C-i>
+	nnoremap <buffer> th <C-o> 
 	nnoremap <buffer> tj <C-w>j
 	nnoremap <buffer> tk <C-w>k
 	" nnoremap <buffer> - :Ex<cr>
@@ -106,12 +108,24 @@ function! NetrwMapping()
   nnoremap <buffer> <nowait> q :bd<cr>
 endfunction
 
+let g:BufSurfIgnore = '\[denite\]-default,\[BufExplorer\]'
+
+" Dirvish
+let g:dirvish_mode = ':sort ,^.*[\/],'
+augroup dirvish_config
+      autocmd!
+      autocmd FileType dirvish silent! nnoremap <buffer> <nowait> q :bwipeout<cr>
+      autocmd FileType dirvish silent! nnoremap <buffer> <C-p> :CocList files<cr>
+augroup END
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
 			\ if line("'\"") > 0 && line("'\"") <= line("$") |
 			\   exe "normal! g`\"" |
 			\ endif
+
+" .conf files
+autocmd BufRead,BufNewFile *.conf setf dosini
 
 
 " fix meta keys automaticaly...
@@ -145,8 +159,10 @@ inoremap <M-s> <esc>:w<cr><esc>
 nnoremap <nowait> <leader>s :w<cr>
 
 " Navigation
-nnoremap tl :bn<cr>
-nnoremap th :bp<cr>
+nnoremap tl <C-i>
+nnoremap th <C-o> 
+" nnoremap tl :BufferHistoryForward<cr>
+" nnoremap th :BufferHistoryBack<cr>
 nnoremap tj <C-w>j
 nnoremap tk <C-w>k
 " nnoremap - :Explore<cr> "vinaegar
@@ -154,7 +170,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-nnoremap q :bd<cr>
+nnoremap q :bwipeout<cr>
 
 "Pum (Popup) keys
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"

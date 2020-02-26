@@ -5,28 +5,8 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx setf typescript.tsx
 " let g:vim_jsx_pretty_colorful_config = 1
 " let g:vim_jsx_pretty_highlight_close_tag	= 1
 
-" augroup debugLesElements 
-"   autocmd!
-" 	autocmd CursorMoved * 
-" 		\ echo map(synstack(line('.'), col('.')),
-" 		\ 'synIDattr(v:val, "name")')
-" augroup end
 
-let g:context#commentstring#table = g:context#commentstring#table
-" augroup setCommentStringTsx 
-"   autocmd!
-"   " Override PHP Comments
-"   autocmd FileType typescript.tsx 
-" augroup END
-let g:context#commentstring#table['typescript.tsx'] = {
-  \ 'tsImport': '// %s',
-	\ 'tsxRegion': '{/*%s*/}', 
-	\ 'jsxRegion': '{/*%s*/}', 
-	\ 'tsxTag': '{/*%s*/}', 
-	\ 'tsComment': '// %s', 
-	\ 'tsxStatment': '// %s',
-	\ 'styledDefinition': '// %s' 
-	\ }
+" nnoremap <f8> :echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<cr>
 
 let g:typescript_indent_disable = 1
 
@@ -181,28 +161,38 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Using CocList
 " Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
 let g:go_def_mapping_enabled = 0
 
-autocmd BufWritePre *.go :CocCommand editor.action.organizeImport
-
+" autocmd BufWritePre *.go :CocCommand editor.action.organizeImport
+" BINDS COC LISTS
+" nnoremap <C-p> :Denite file/rec -start-filter -no-statusline<cr>
+nnoremap <C-p> :CocList files<cr>
+" nnoremap <nowait> <leader><space> :Denite buffer<cr>
+nnoremap <nowait> <leader><space> :CocList buffers<cr>
+" nnoremap <M-f> :Denite grep<cr>
+nnoremap <M-f> :CocList grep<cr>
+" nnoremap <F1> :Denite help<cr>
+" nnoremap <F2> :Denite register<cr>
+" nnoremap <nowait> <leader>j :Denite jump<cr>
+" nnoremap <leader>g :Denite grep<cr>
 " MYSQL
 let g:pipemysql_no_mappings = 0
 nnoremap <leader>db :call g:PipeMySQL_SelectPreset()<cr>

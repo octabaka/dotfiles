@@ -18,3 +18,5 @@ export EDITOR=/usr/bin/vim
 
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
+
+source /home/octa/.config/broot/launcher/bash/br
