@@ -198,3 +198,8 @@ let g:pipemysql_no_mappings = 0
 nnoremap <leader>db :call g:PipeMySQL_SelectPreset()<cr>
 autocmd FileType sql vnoremap <buffer> <return> :call g:PipeMySQL_RunBlock()<cr>
 " SEE vimrc.local
+"
+"
+"
+"PLATFORMIO
+nnoremap <F11> :!pio run --target upload<cr>
