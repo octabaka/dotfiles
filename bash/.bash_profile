@@ -4,6 +4,9 @@
 export GOPATH=$HOME/go
 export PATH=$PATH:$(go env GOPATH)/bin
 export PATH=$PATH:$HOME/.node_modules/bin
+export PATH=$PATH:$HOME/.pub-cache/bin
+
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc

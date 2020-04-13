@@ -29,7 +29,8 @@
   },
 	"suggest.echodocSupport": true ,
 	"coc.preferences.colorSupport": true,
-	"coc.preferences.formatOnSaveFiletypes": ["typescript", "typescriptreact", "graphql", "go"],
+	"coc.preferences.formatOnSaveFiletypes": ["typescript", "typescriptreact", "graphql", "go", "html"],
 	"snippets.ultisnips.enable": true,
 	"snippets.ultisnips.directories": ["~/dev/vim/snippets/"],
+	"html.filetypes": ["html", "svelte" ]
 }

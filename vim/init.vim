@@ -36,6 +36,7 @@ call plug#begin('~/.vim/plugged')
  " Plug 'HerringtonDarkholme/yats.vim'
  Plug 'leafgarland/typescript-vim'
  Plug 'peitalin/vim-jsx-typescript'
+ Plug 'evanleck/vim-svelte'
  " Plug 'maxmellon/vim-jsx-pretty'
  Plug 'mattn/emmet-vim'
  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
@@ -43,7 +44,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'NLKNguyen/pipe.vim' "required
  Plug 'NLKNguyen/pipe-mysql.vim'
 
- Plug 'skywind3000/vim-keysound'
+ " Plug 'skywind3000/vim-keysound'
 
 " Syntax 
 "
@@ -51,7 +52,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'Glench/Vim-Jinja2-Syntax'
  Plug 'jparise/vim-graphql'
 
- Plug 'wakatime/vim-wakatime'
+ " Plug 'wakatime/vim-wakatime'
  " Plug 'dhruvasagar/vim-buffer-history'
 
 call plug#end()

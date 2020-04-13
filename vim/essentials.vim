@@ -45,7 +45,7 @@ set pumheight=20   " Avoid the pop up menu occupying the whole screen
 " set number relativenumber
 set number 
 set cursorline 
-set clipboard=unnamed
+set clipboard=unnamedplus
 " set switchbuf=usetab,newtab "This should mean switching to the existing tab if the buffer is open, or creating a new one if not.
 set switchbuf=usetab "This should mean switching to the existing tab if the buffer is open, or creating a new one if not.
 

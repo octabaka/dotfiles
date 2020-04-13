@@ -31,7 +31,7 @@ alias l='ls -alh'
 alias watch='watch -c -t'
 alias gs="git status"
 alias gc="git commit -a"
-alias gg="git log --graph --oneline --all"
+alias gg="git log --decorate --graph --oneline --all"
 alias go='grc go'
 alias p='ps axf --format "pid %cpu %mem cmd"'
 alias pp='ps ax --format "pid %cpu %mem cmd" --sort "%cpu %mem"'
@@ -43,7 +43,7 @@ alias bépo='setxkbmap ch fr'
 
 export LS_COLORS='di=04;01;38;5;33:ow=04;01;38;5;33;48;2;60;10;0'
 
-export PS1=" \[\e[00;93m\]λ \[\e[00;34m\]\W \[\e[0m\]"
+export PS1=" \[\e[00;93m\]λ \[\e[00;34m\]\W \[\e[00;31m\]\$(git branch 2>/dev/null | grep '^*' | colrm 1 2) \[\e[0m\]"
 # PS1='[\u@\h \W]\$ '
 
 

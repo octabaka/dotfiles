@@ -199,6 +199,20 @@ nnoremap <leader>db :call g:PipeMySQL_SelectPreset()<cr>
 autocmd FileType sql vnoremap <buffer> <return> :call g:PipeMySQL_RunBlock()<cr>
 " SEE vimrc.local
 "
+let g:coc_global_extensions = [ 
+			\ 'coc-omnisharp', 
+			\ 'coc-snippets', 
+			\ 'coc-prettier', 
+			\ 'coc-pairs', 
+			\ 'coc-lists',
+			\ 'coc-json', 
+			\ 'coc-tsserver', 
+			\ 'coc-tslint-plugin', 
+			\ 'coc-python', 
+			\ 'coc-flutter', 
+			\ 'coc-css' 
+			\ ]
+
 "
 "
 "PLATFORMIO
