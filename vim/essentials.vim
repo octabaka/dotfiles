@@ -87,6 +87,11 @@ set noshowmode
 " let g:netrw_keepdir=0
 " let g:netrw_winsize = 18
 " " let g:netrw_browse_split = 4
+"
+
+" Explorer netrw ranger etc...
+nnoremap - :RangerOpenCurrentDir<cr> 
+
 augroup netrw_mapping
 	autocmd!
 	autocmd filetype netrw call NetrwMapping()
@@ -117,6 +122,8 @@ augroup dirvish_config
       autocmd FileType dirvish silent! nnoremap <buffer> <nowait> q :bwipeout<cr>
       autocmd FileType dirvish silent! nnoremap <buffer> <C-p> :CocList files<cr>
 augroup END
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -125,7 +132,7 @@ autocmd BufReadPost *
 			\ endif
 
 " .conf files
-autocmd BufRead,BufNewFile *.conf setf dosini
+" autocmd BufRead,BufNewFile *.conf setf dosini
 
 
 " fix meta keys automaticaly...

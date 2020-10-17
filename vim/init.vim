@@ -23,13 +23,16 @@ call plug#begin('~/.vim/plugged')
  Plug 'tpope/vim-repeat'
  " Plug 'tpope/vim-eunuch'
  " Plug 'tpope/vim-vinegar'
- Plug 'justinmk/vim-dirvish'
+ "
+ " Plug 'justinmk/vim-dirvish'
+ Plug 'iberianpig/ranger-explorer.vim'
+
  " Plug 'jiangmiao/auto-pairs' 
  Plug 'liuchengxu/vista.vim'
  " Plug 'markonm/traces.vim'
  Plug 'tpope/vim-fugitive'
  Plug 'mhinz/vim-startify'
- Plug 'tpope/vim-obsession'
+ " Plug 'tpope/vim-obsession'
  Plug 'tpope/vim-abolish'
 
  " WEB
@@ -37,14 +40,19 @@ call plug#begin('~/.vim/plugged')
  Plug 'leafgarland/typescript-vim'
  Plug 'peitalin/vim-jsx-typescript'
  Plug 'evanleck/vim-svelte'
+ " Plug 'kynan/dokuvimki', {'on': 'DokuVimKi'}
+
  " Plug 'maxmellon/vim-jsx-pretty'
  Plug 'mattn/emmet-vim'
- Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+ " Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+ Plug 'neoclide/coc.nvim', {'branch': 'release'}
  Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
  Plug 'NLKNguyen/pipe.vim' "required
  Plug 'NLKNguyen/pipe-mysql.vim'
 
  " Plug 'skywind3000/vim-keysound'
+ " RANGER
+
 
 " Syntax 
 "

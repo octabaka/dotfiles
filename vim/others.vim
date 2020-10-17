@@ -25,7 +25,7 @@ let g:startify_bookmarks = [
          \ { 'b': '~/.config/bspwm/bspwmrc' },
          \ { 's': '~/.config/sxhkd/sxhkdrc' },
          \ { 'p': '~/.config/polybar/config' },
-         \ { 'r': '~/.config/rofi/config' },
+         \ { 'r': '~/.config/ranger/rc.conf' },
          \ { 'i': '~/.config/i3/config' },
          \ { 'a': '~/.local/share/applications/' },
          \ { 'n': '~/Bureau/blocNote.txt' },
