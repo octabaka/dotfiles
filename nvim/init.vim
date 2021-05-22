@@ -1,35 +1,37 @@
-scriptencoding utf-8
-
-set shell=/bin/bash
-
 call plug#begin('~/.vim/plugged')
-
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'itchyny/lightline.vim'
-
-Plug 'suy/vim-context-commentstring'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-startify'
+Plug 'tpope/vim-abolish'
 
 Plug 'rbgrouleff/bclose.vim'
 
 Plug 'ptzz/lf.vim'
 Plug 'voldikss/vim-floaterm'
 
-Plug 'mbbill/undotree'
-" Plug 'liuchengxu/vista.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-startify'
-Plug 'tpope/vim-abolish'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+" Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
+
+
+" other
+Plug 'liuchengxu/vim-which-key'
+Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'skywind3000/vim-keysound'
+"
 " DEV
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" WEB
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'mattn/emmet-vim'
-
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'leafOfTree/vim-svelte-plugin'
@@ -38,11 +40,6 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'NLKNguyen/pipe.vim' "required
 Plug 'NLKNguyen/pipe-mysql.vim'
 Plug 'diepm/vim-rest-console'
-
-
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
 
 " Syntaxes 
 Plug 'hashivim/vim-hashicorp-tools'
@@ -58,23 +55,16 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
 
-" other
-Plug 'liuchengxu/vim-which-key'
-Plug 'nathanaelkane/vim-indent-guides'
-" Plug 'skywind3000/vim-keysound'
-
 call plug#end()
 
-" let s:my_path=$HOME.'/devops/dotfiles/vim/'
-let s:my_path='/home/octa/devops/dotfiles/vim/'
+
+let s:my_path='~/.config/nvim/'
 
 exec 'source ' . s:my_path . 'essentials.vim'
-exec 'source ' . s:my_path . 'dev.vim'
 exec 'source ' . s:my_path . 'colors.vim'
+exec 'source ' . s:my_path . 'dev.vim'
 exec 'source ' . s:my_path . 'others.vim'
 exec 'source ' . s:my_path . 'keys.vim'
-if filereadable('/home/octa/.vimrc.local')
-	exec 'source /home/octa/.vimrc.local'
-endif
+
 
 

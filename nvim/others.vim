@@ -9,7 +9,7 @@ let g:startify_session_persistence = 0
 let g:startify_session_delete_buffers = 1
 let g:startify_session_autoload = 1
 let g:startify_session_remove_lines = ['vim-simpledb-result.txt']
-let g:startify_custom_header = ['VIM']
+let g:startify_custom_header = ['########### NVIM #############']
 let g:startify_list_order = [
          \ ['These are my bookmarks:'],
          \ 'bookmarks',
@@ -22,7 +22,7 @@ let g:startify_list_order = [
          \ ]
 
 let g:startify_bookmarks = [
-         \ { 'c': '~/devops/dotfiles/vim/init.vim' },
+         \ { 'c': '~/devops/dotfiles/nvim/init.vim' },
          \ { 'b': '~/.config/bspwm/bspwmrc' },
          \ { 's': '~/.config/sxhkd/sxhkdrc' },
          \ { 'p': '~/.config/polybar/config' },

@@ -2,16 +2,7 @@
 "
 " set termguicolors
 set t_Co=256       " Use 256 colors
-
 " set background=dark
-
-
-" AIRLINE "
-let g:airline_powerline_fonts = 1
-" let g:airline_theme='jellybeans'
-let g:airline_theme='afterglow'
-let g:airline_extensions = ['denite']
-
 " \[ 'readonly', 'filename', 'modified', 'method' ] ]
 let g:lightline = {
  \ 'active': {
@@ -23,7 +14,7 @@ let g:lightline = {
 			\   'method': 'NearestMethodOrFunction',
       \ },
       \ }
-
+" let g:lightline.colorscheme='onehalfdark'
 function! LightLineFilename()
 	let name = ""
 	let subs = split(expand('%'), "/")
@@ -54,15 +45,8 @@ endfunction
 let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
-
-
 " ###################################### COLORS #################################
-" let g:afterglow_blackout=1
-" let g:afterglow_inherit_background=1
-let g:dracula_bold = 1
-" colors one
-" colors palenight 
-" colors dracula
+"
 colors onehalfdark
 hi Comment ctermfg=237 ctermbg=NONE cterm=NONE
 hi CursorLine ctermfg=NONE ctermbg=233 cterm=NONE 
@@ -85,21 +69,3 @@ hi IndentGuidesEven ctermbg=234
 hi MatchParen ctermfg=NONE ctermbg=89 
 
 hi Pmenu ctermfg=245 ctermbg=234
-
-
-"" Nom du Tag: ouverture 
-" hi tsxTagName ctermfg=lightblue
-" hi tsxTag ctermfg=lightblue guifg=lightblue
-" " Fermeture 
-" hi tsxCloseString ctermfg=blue 
-" hi tsxCloseTag guifg=#F99575
-" hi tsxAttributeBraces guifg=#F99575
-" hi tsxEqual guifg=#F99575
-
-" Attributes 
-" hi tsxAttrib ctermfg=darkmagenta cterm=italic
-"
-" Generics 
-" hi tsxTypeBraces guifg=#999999
-" hi tsxTypes guifg=#666666
-"

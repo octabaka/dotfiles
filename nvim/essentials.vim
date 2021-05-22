@@ -1,3 +1,11 @@
+set shell=/bin/bash
+syntax on                      " Syntax highlighting
+
+set noerrorbells
+set scrolloff=3    " Minumum lines to keep above and below cursor
+set nowrap         " Do not wrap long lines
+set shiftwidth=2   " Use indents of 4 spaces
+set expandtab
 set nocompatible
 syntax on                      " Syntax highlighting
 filetype plugin indent on      " Automatically detect file types
@@ -5,6 +13,8 @@ set autoindent                 " Indent at the same level of the previous line
 set autoread                   " Automatically read a file changed outside of vim
 set backspace=indent,eol,start " Backspace for dummies
 set complete-=i                " Exclude files completion
+" set completeopt=menu,menuone,noselect
+
 set display=lastline           " Show as much as possible of the last line
 set encoding=utf-8             " Set default encoding
 set history=10000              " Maximum history record
@@ -16,7 +26,6 @@ set smarttab                   " Smart tab
 set ttyfast                    " Faster redrawing
 set viminfo+=!                 " Viminfo include !
 set wildmenu                   " Show list instead of just completing
-set ttymouse=xterm2
 set shortmess=atOI " No help Uganda information, and overwrite read messages to avoid PRESS ENTER prompts
 set ignorecase     " Case insensitive search
 set smartcase      " ... but case sensitive when uc present
@@ -70,15 +79,6 @@ set wildignore+=*/node_modules/*,*/.git/*,*.min.js,*.min.css
 set noshowmode
 set sessionoptions-=options " disable options from sessions
 
-set termwinsize=8x0
-
-" cursor
-" augroup myCmds
-" au!
-" autocmd VimEnter * silent !echo -ne "\e[2 q"
-" augroup END
-
-
 " NETRW"
 let g:netrw_banner=0
 let g:netrw_altv=1
@@ -89,43 +89,14 @@ let g:netrw_preview = 0
 let g:netrw_keepdir=0
 let g:netrw_winsize = 18
 " let g:netrw_browse_split = 4
-
-
-
 "
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+			\ if line("'\"") > 0 && line("'\"") <= line("$") |
+			\   exe "normal! g`\"" |
+			\ endif
 
-" Explorer netrw ranger etc...
-" map - <Nop>
-" let g:NERDTreeHijackNetrw = 0 " add this line if you use NERDTree
-" let g:ranger_replace_netrw = 1 " open ranger when vim open a directory
-" let g:ranger_map_keys = 0
-" function! Lf(path)
-"     let temp = tempname()
-"     exec 'silent !lf -selection-path=' . shellescape(temp) 
-"     if !filereadable(temp)
-"         redraw!
-"         return
-"     endif
-"     let names = readfile(temp)
-"     if empty(names)
-"         redraw!
-"         return
-"     endif
-"     exec 'edit ' . fnameescape(names[0])
-"     for name in names[1:]
-"         exec 'argadd ' . fnameescape(name)
-"     endfor
-"     redraw!
-" endfunction
 
-" function! OpenLfIn(path)
-"   let currentPath = shellescape(isdirectory(a:path) ? fnamemodify(expand(a:path), ":p:h") : expand(a:path))
-" 	" exec "set path+=".currentPath
-" 	" exec 'lcd' fnameescape(currentPath)
-"   exec 'silent !lf' . ' ' . currentPath
-"   redraw!
-" endfun
-" ##############
 let g:floaterm_position = 'center'
 let g:floaterm_width = 100
 let g:floaterm_height = 30
@@ -134,63 +105,91 @@ let g:floaterm_title = ''
 
 let g:lf_map_keys = 0
 let g:lf_replace_netrw = 1 " Open lf when vim opens a directory
-" ##############
+lua << EOF
+require('telescope').setup{
+  defaults = {
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '--hidden',
+      '--glob', '!.git/*',
+      '--glob', '!.gitignore',
+      '--glob', '!node_modules',
+      '--glob', '!__sapper__',
+      '--glob', '!package-lock.json',
+    },
+    prompt_position = "bottom",
+    prompt_prefix = "> ",
+    selection_caret = "> ",
+    entry_prefix = "  ",
+    initial_mode = "insert",
+    selection_strategy = "reset",
+    sorting_strategy = "descending",
+    layout_strategy = "horizontal",
+    layout_defaults = {
+      horizontal = {
+        mirror = false,
+      },
+      vertical = {
+        mirror = false,
+      },
+    },
+    file_sorter =  require'telescope.sorters'.get_fzy_sorter,
+    file_ignore_patterns = {"node_modules", "__sapper__"} ,
+    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+    shorten_path = true,
+    winblend = 0,
+    width = 0.75,
+    preview_cutoff = 120,
+    results_height = 1,
+    results_width = 0.8,
+    border = {},
+    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+    color_devicons = true,
+    use_less = true,
+    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
 
-" augroup ReplaceNetrwByLfVim
-"   autocmd VimEnter * silent! autocmd! FileExplorer
-"   autocmd BufEnter * let s:buf_path = expand("%") | if isdirectory(s:buf_path) | bdelete! | call timer_start(100, {->OpenLfIn(s:buf_path)}) | endif
-" augroup END
+    -- Developer configurations: Not meant for general override
+    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+  }
+}
+local actions = require('telescope.actions')
+-- Global remapping
+------------------------------
+require('telescope').setup{
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<C-j>"] = actions.move_selection_next,
+        -- Add up multiple actions
+        ["<cr>"] = actions.select_default + actions.center,
+        -- You can perform as many actions in a row as you like
+        -- ["<cr>"] = actions.select_default + actions.center + my_cool_custom_action,
+      },
+      n = {
+        ["<esc>"] = actions.close,
+        ["q"] = actions.close,
+      },
+    },
+  }
+}
+require('telescope').setup {
+    extensions = {
+        fzy_native = {
+            override_generic_sorter = false,
+            override_file_sorter = true,
+        }
+    }
+}
+require('telescope').load_extension('fzy_native')
 
-" nnoremap - :RangerCurrentDirectory<cr> 
-
-" augroup netrw_mapping
-" 	autocmd!
-" 	autocmd filetype netrw call NetrwMapping()
-" augroup END
-
-function! NetrwMapping()
-	" nnoremap <buffer> tl :BufferHistoryForward<cr>
-	" nnoremap <buffer> th :BufferHistoryBack<cr>
-	nnoremap <buffer> l <enter>
-	nnoremap <buffer> tl <C-i>
-	nnoremap <buffer> th <C-o> 
-	nnoremap <buffer> tj <C-w>j
-	nnoremap <buffer> tk <C-w>k
-	" nnoremap <buffer> - :Ex<cr>
-	nnoremap <buffer> <C-h> <C-w>h
-	nnoremap <buffer> <C-j> <C-w>j
-	nnoremap <buffer> <C-k> <C-w>k
-	nnoremap <buffer> <C-l> <C-w>l
-  " nnoremap <buffer> <nowait> q :Rexplore<cr>
-  nnoremap <buffer> <nowait> q :bd<cr>
-endfunction
-
-
-" Dirvish
-" let g:dirvish_mode = ':sort ,^.*[\/],'
-" augroup dirvish_config
-"       autocmd!
-"       autocmd FileType dirvish silent! nnoremap <buffer> <nowait> q :bwipeout<cr>
-"       " autocmd FileType dirvish silent! nnoremap <buffer> <C-p> :CocList files<cr>
-" 			autocmd FileType dirvish silent! unmap <buffer> <C-p>
-" 			" autocmd FileType dirvish silent! unmap <buffer> l 
-"       " autocmd FileType dirvish silent! nnoremap <buffer> l <enter> 
-" augroup END
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-" Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-			\ if line("'\"") > 0 && line("'\"") <= line("$") |
-			\   exe "normal! g`\"" |
-			\ endif
-
-" .conf files
-" autocmd BufRead,BufNewFile *.conf setf dosini
-
-
-let g:vim_markdown_frontmatter = 1
-let g:vim_markdown_toml_frontmatter = 1
-let g:vim_markdown_folding_disabled = 1
-
-
+EOF

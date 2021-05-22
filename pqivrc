@@ -1,0 +1,9 @@
+
+[options]
+
+[keybindings]
+
+h { quit(); }
+j { goto_file_relative(-1); }
+k { goto_file_relative(1); }
+l { toggle_fullscreen(0) ;}
