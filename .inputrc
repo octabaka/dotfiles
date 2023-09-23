@@ -1,0 +1,11 @@
+
+set completion-ignore-case on
+set colored-stats on
+set show-all-if-ambiguous on
+set colored-completion-prefix on
+# TAB: menu-complete
+$if mode=vi
+set keymap vi-command
+"diw": "lbdw"
+$endif
+
