@@ -77,10 +77,23 @@ return {
         },
         indent = { enable = true },
         additional_vim_regex_highlighting = false,
-        context_commentstring = {
-          enable = true,
-          enable_autocmd = false,
-          config = {
+        -- context_commentstring = {
+        --   enable = true,
+        --   enable_autocmd = false,
+        --   config = {
+        --     svelte = {
+        --       __default = "<!-- %s -->",
+        --       html = "<!-- %s -->",
+        --       css = "/* %s */",
+        --       javascript = "//%s",
+        --       typescript = "//%s",
+        --     },
+        --   }
+        -- }
+      })
+      require('ts_context_commentstring').setup {
+        enable_autocmd = false,
+        languages = {
             svelte = {
               __default = "<!-- %s -->",
               html = "<!-- %s -->",
@@ -88,9 +101,8 @@ return {
               javascript = "//%s",
               typescript = "//%s",
             },
-          }
         }
-      })
+      }
     end,
   },
   -- { 'nvim-treesitter/playground',
